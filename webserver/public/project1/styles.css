@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'Mintsoda';
+    src: url('https://raw.githubusercontent.com/n3xta/image-hosting/main/fonts/mintsoda.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Mintsoda', sans-serif;
+    text-align: center;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+ul a {
+    color: #0059ff;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+ul a:hover {
+    color: #ff6600;
+}
