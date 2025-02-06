@@ -1,0 +1,51 @@
+body{
+    margin: 0;
+    overflow-y: hidden;
+}
+
+.container {
+  height: 100vh; 
+  /* viewport or vertical?? */
+  width: 80vw;
+  margin: auto;
+  background-color: aquamarine;
+}
+
+#myBtn {
+    position: relative;
+    top: 10px;
+}
+
+#change{
+    position: relative;
+    top: 10px;
+    left: 100px;
+    height: 100px;
+    width: 100px;
+}
+
+.day{
+    z-index: 10;
+    background-color: white;
+    color: black;
+}
+
+.day:hover{
+    height: 120px;
+    width: 120px;
+    transition: all 0.5s ease-in-out;
+}
+
+.night{
+    background-color: black;
+    color: white;
+}
+
+#typing{
+    position: absolute;
+    top: 200px;
+    width: 60%;
+    height: 100px;
+    left: 20%;
+    background-color: tomato;
+}
