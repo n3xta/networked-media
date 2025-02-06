@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "mintsoda";
+    src: url("https://raw.githubusercontent.com/n3xta/image-hosting/main/fonts/mintsoda.ttf") format("truetype");
+}
+
+body {
+    font-family: "mintsoda";
+    font-size: 32px;
+}

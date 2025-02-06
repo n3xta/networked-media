@@ -75,6 +75,8 @@ ul {
     list-style-type: none;
     padding: 0;
     margin: 10px 0;
+    z-index: 4;
+    line-height: 40px;
 }
 
 ul a {
@@ -83,11 +85,11 @@ ul a {
     font-size: 2em;
     transition: color 0.3s;
     font-weight: bold;
+    background-color: #000000;
 }
 
 ul a:hover {
     color: #ffffff;
-    z-index: 5;
 }
 
 .img-unlock {
