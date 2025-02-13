@@ -2,30 +2,68 @@ const hourHand = document.getElementById('hour-hand');
 const minuteHand = document.getElementById('minute-hand');
 const secondHand = document.getElementById('second-hand');
 
-const startTime = Date.now();
+// const startTime = Date.now();
 
 function updateClock() {
-  const elapsed = (Date.now() - startTime) / 1000;
-
-  const hourAngle = (elapsed * 0.1) % 360;
-  const minuteAngle = (elapsed * 6) % 360;
-  const secondAngle = (elapsed * 360) % 360;
-
   const now = new Date();
-  const hours = now.getHours();
   const minutes = now.getMinutes();
   const seconds = now.getSeconds();
   const milliseconds = now.getMilliseconds();
 
-  hourHand.style.transform = `translateX(-50%) rotate(${hourAngle}deg)`;
+  // Hour hand now follows the minutes (plus fraction for seconds+milliseconds).
+  // A normal minute-hand angle = (minutes + fraction) * 6,
+  // so we assign that to the hourHand:
+  const hourAngle =
+    (minutes + seconds / 60 + milliseconds / 60000) * 6;
+
+  // Minute hand now follows the seconds (plus fraction for milliseconds).
+  // A normal second-hand angle = (seconds + fraction) * 6,
+  // so we assign that to the minuteHand:
+  const minuteAngle =
+    (seconds + milliseconds / 1000) * 6;
+
+  // Second hand does a full 360° rotation each second.
+  // That means in one second, it should rotate by 360°, so:
+  // (seconds + fraction) * 360 degrees.
+  // We can optionally use `% 360` to keep it in [0..360), but it isn’t required.
+  const secondAngle =
+    (seconds + milliseconds / 1000) * 360 % 360;
+
+  hourHand.style.transform   = `translateX(-50%) rotate(${hourAngle}deg)`;
   minuteHand.style.transform = `translateX(-50%) rotate(${minuteAngle}deg)`;
   secondHand.style.transform = `translateX(-50%) rotate(${secondAngle}deg)`;
 
   document.getElementById("background-time").innerText =
-  now.toLocaleTimeString('en-IT', { hour12: false }) + " " + String(milliseconds).padStart(3, '0');
+    now.toLocaleTimeString('en-IT', { hour12: false }) + " " +
+    String(milliseconds).padStart(3, '0');
 
   requestAnimationFrame(updateClock);
 }
+
+
+
+// function updateClock() {
+//   // const elapsed = (Date.now() - startTime) / 1000;
+
+//   const hourAngle = (elapsed * 0.1) % 360;
+//   const minuteAngle = (elapsed * 6) % 360;
+//   const secondAngle = (elapsed * 360) % 360;
+
+//   const now = new Date();
+//   const hours = now.getHours();
+//   const minutes = now.getMinutes();
+//   const seconds = now.getSeconds();
+//   const milliseconds = now.getMilliseconds();
+
+//   hourHand.style.transform = `translateX(-50%) rotate(${hourAngle}deg)`;
+//   minuteHand.style.transform = `translateX(-50%) rotate(${minuteAngle}deg)`;
+//   secondHand.style.transform = `translateX(-50%) rotate(${secondAngle}deg)`;
+
+//   document.getElementById("background-time").innerText =
+//   now.toLocaleTimeString('en-IT', { hour12: false }) + " " + String(milliseconds).padStart(3, '0');
+
+//   requestAnimationFrame(updateClock);
+// }
 
 function createTickMarks(containerId, diameterVh) {
   const container = document.getElementById(containerId);
