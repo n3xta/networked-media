@@ -37,7 +37,7 @@ body {
 
 .hour {
     width: 20px;
-    height: 54vh;
+    height: 25vh;
     background: #333;
 }
 
@@ -49,7 +49,8 @@ body {
 
 .second {
     width: 10px;
-    height: 25vh;
+    height: 54vh;
+    height: 54vh;
     background: rgb(0, 0, 0);
 }
 
